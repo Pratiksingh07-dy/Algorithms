@@ -1,94 +1,112 @@
-Bubble Sort
-📌 Introduction
+# 🫧 Bubble Sort
 
-Bubble Sort is one of the simplest comparison-based sorting algorithms. It repeatedly compares adjacent elements in an array and swaps them if they are in the wrong order.
+> *"The simplest sorting algorithm — and the best one for building intuition."*
 
-The algorithm continues making passes through the array until no more swaps are required, indicating that the array is sorted.
+---
 
-The name Bubble Sort comes from the way larger elements "bubble up" to the end of the array after each pass.
+## What is Bubble Sort?
 
-🎯 Problem Statement
+Bubble Sort is a comparison-based sorting algorithm that repeatedly walks through an array, compares adjacent elements, and swaps them if they're in the wrong order. After each full pass, the largest unsorted element "bubbles up" to its correct position at the end.
 
-Given an unsorted array, arrange the elements in ascending order by repeatedly swapping adjacent elements when they are in the wrong order.
+The algorithm keeps making passes until no swaps are needed — which means the array is sorted.
 
-Example
+---
 
-Input:
+## The Problem
 
+**Input:** An unsorted array of numbers
+
+```
 [5, 3, 8, 4, 2]
+```
 
-Output:
+**Output:** The same elements in ascending order
 
+```
 [2, 3, 4, 5, 8]
-⚙️ How Bubble Sort Works
+```
 
-Consider the array:
+---
 
-[5, 3, 8, 4, 2]
-Pass 1
+## Visualising the Algorithm
 
-Compare 5 and 3
+Here's what happens step-by-step. Elements being compared are marked with `^`, and sorted positions are marked `✓`:
 
-[3, 5, 8, 4, 2]
+```
+Initial:  [ 5   3   8   4   2 ]
 
-Compare 5 and 8
+── Pass 1 ──────────────────────────────────────────────
+          [ 5   3   8   4   2 ]
+             ^   ^              compare 5,3 → swap
+          [ 3   5   8   4   2 ]
+                 ^   ^          compare 5,8 → ok
+          [ 3   5   8   4   2 ]
+                     ^   ^      compare 8,4 → swap
+          [ 3   5   4   8   2 ]
+                         ^   ^  compare 8,2 → swap
+          [ 3   5   4   2   8 ]
+                             ✓  8 is in place
 
-[3, 5, 8, 4, 2]
+── Pass 2 ──────────────────────────────────────────────
+          [ 3   5   4   2   8 ]
+             ^   ^              compare 3,5 → ok
+          [ 3   5   4   2   8 ]
+                 ^   ^          compare 5,4 → swap
+          [ 3   4   5   2   8 ]
+                     ^   ^      compare 5,2 → swap
+          [ 3   4   2   5   8 ]
+                         ✓   ✓  5 and 8 in place
 
-Compare 8 and 4
+── Pass 3 ──────────────────────────────────────────────
+          [ 3   4   2   5   8 ]
+             ^   ^              compare 3,4 → ok
+          [ 3   4   2   5   8 ]
+                 ^   ^          compare 4,2 → swap
+          [ 3   2   4   5   8 ]
+                     ✓   ✓   ✓  4, 5, 8 in place
 
-[3, 5, 4, 8, 2]
+── Pass 4 ──────────────────────────────────────────────
+          [ 3   2   4   5   8 ]
+             ^   ^              compare 3,2 → swap
+          [ 2   3   4   5   8 ]
+             ✓   ✓   ✓   ✓   ✓  Array fully sorted! ✅
+```
 
-Compare 8 and 2
+> **Key insight:** After each pass, the largest unsorted element is guaranteed to be in its final position. So each pass needs one fewer comparison than the last.
 
-[3, 5, 4, 2, 8]
+---
 
-Largest element (8) reaches its correct position.
+## The Algorithm (5 Steps)
 
-Pass 2
+```
+1.  Start at the beginning of the array
+2.  Compare the current element with its right neighbour
+3.  If left > right → swap them
+4.  Move one position right and repeat
+5.  After each full pass, the last unsorted element is settled
+    → Repeat until no swaps occur in a pass
+```
 
-Compare 3 and 5
+---
 
-[3, 5, 4, 2, 8]
+## Pseudocode
 
-Compare 5 and 4
-
-[3, 4, 5, 2, 8]
-
-Compare 5 and 2
-
-[3, 4, 2, 5, 8]
-Pass 3
-
-Compare 3 and 4
-
-[3, 4, 2, 5, 8]
-
-Compare 4 and 2
-
-[3, 2, 4, 5, 8]
-Pass 4
-
-Compare 3 and 2
-
-[2, 3, 4, 5, 8]
-
-Array is now sorted.
-
-🔍 Algorithm
-Traverse the array from left to right.
-Compare adjacent elements.
-Swap if the left element is greater than the right element.
-After each pass, the largest unsorted element reaches its correct position.
-Repeat until the array becomes sorted.
-
-📝 Pseudocode
-for i = 0 to n-1
-    for j = 0 to n-i-2
-        if arr[j] > arr[j+1]
+```
+for i = 0 to n-1:
+    swapped = false
+    for j = 0 to n-i-2:
+        if arr[j] > arr[j+1]:
             swap(arr[j], arr[j+1])
+            swapped = true
+    if not swapped:
+        break          ← early exit if already sorted
+```
 
-💻 Python Implementation
+---
+
+## Python Implementation
+
+```python
 def bubble_sort(arr):
     n = len(arr)
 
@@ -96,97 +114,127 @@ def bubble_sort(arr):
         swapped = False
 
         for j in range(0, n - i - 1):
-
             if arr[j] > arr[j + 1]:
                 arr[j], arr[j + 1] = arr[j + 1], arr[j]
                 swapped = True
 
-        if not swapped:
+        if not swapped:   # ← optimisation: stop early if sorted
             break
 
     return arr
 
 
+# Example
 arr = [5, 3, 8, 4, 2]
+print("Before:", arr)
+print("After: ", bubble_sort(arr))
+# After:  [2, 3, 4, 5, 8]
+```
 
-print("Original Array:", arr)
-print("Sorted Array:", bubble_sort(arr))
+> **Optimisation:** The `swapped` flag lets us detect an already-sorted array in a single pass — achieving **O(n)** best-case time.
 
+---
 
-📊 Time Complexity Analysis
-Case	     Time Complexity
-Best Case	     O(n)
-Average Case     O(n²)
-Worst Case	     O(n²)
+## Complexity
 
-Explanation
+### Time
 
-Best Case
-Occurs when the array is already sorted. With the optimization using the swapped flag, the algorithm stops after one pass.
+| Case         | Complexity | When it happens                              |
+|--------------|-----------|----------------------------------------------|
+| Best case    | **O(n)**  | Array is already sorted (swapped flag kicks in) |
+| Average case | **O(n²)** | Elements are in random order                 |
+| Worst case   | **O(n²)** | Array is sorted in reverse                   |
 
-Average Case
-The algorithm performs multiple comparisons and swaps.
+### Space
 
-Worst Case
-Occurs when the array is sorted in reverse order.
+| Metric         | Complexity | Why                                         |
+|----------------|-----------|----------------------------------------------|
+| Auxiliary space | **O(1)** | Swaps happen in-place, no extra array needed |
 
-💾 Space Complexity
-Metric	Complexity
-Auxiliary Space	O(1)
+---
 
-Bubble Sort is an in-place sorting algorithm because it does not require additional memory proportional to the input size.
+## Properties at a Glance
 
-⭐ Characteristics
-Property	Value
-Stable	Yes
-In-Place	Yes
-Adaptive	Yes (Optimized Version)
-Comparison Based	Yes
-Recursive	No
+| Property         | Value  | Notes                                      |
+|------------------|--------|--------------------------------------------|
+| Stable           | ✅ Yes  | Equal elements keep their relative order |
+| In-Place         | ✅ Yes  | No extra memory needed                    |
+| Adaptive         | ✅ Yes  | Optimised version exits early             |
+| Comparison-Based | ✅ Yes  | Decisions made by comparing pairs         |
+| Recursive        | ❌ No   | Iterative by nature                       |
 
-✅ Advantages
-Easy to understand and implement.
-Requires no extra memory.
-Stable sorting algorithm.
-Useful for educational purposes.
-Can detect already sorted arrays efficiently using optimization.
+---
 
-❌ Disadvantages
-Poor performance on large datasets.
-Large number of comparisons.
-Not suitable for production-level applications.
-Much slower than Merge Sort, Quick Sort, and Heap Sort.
+## Pros and Cons
 
-🌍 Real-World Use Cases
-Bubble Sort is rarely used in production systems, but it is valuable for:
-Learning sorting concepts.
-Understanding algorithm optimization.
-Teaching time complexity analysis.
-Small datasets where simplicity is preferred.
+### ✅ Advantages
+- Dead simple to understand and implement
+- Requires zero extra memory
+- Stable — safe for records where order matters
+- Detects sorted arrays efficiently with the `swapped` flag
+- Perfect for learning how sorting works
 
+### ❌ Disadvantages
+- Terrible performance on large inputs — O(n²)
+- Enormous number of comparisons even for small gains
+- Not used in production — Quick Sort, Merge Sort, and Tim Sort are all faster
 
-🔥 Interview Questions
-1. Is Bubble Sort stable?
-Yes. Equal elements maintain their relative order after sorting.
+---
 
-2. Is Bubble Sort an in-place algorithm?
-Yes. It uses constant extra memory O(1).
+## When to Use It
 
-3. Why is Bubble Sort called Bubble Sort?
-Because larger elements gradually move toward the end of the array, similar to bubbles rising to the surface.
+```
+Bubble Sort is the right choice when:
+  ✓ You're learning sorting fundamentals
+  ✓ The dataset is tiny (n < 20 or so)
+  ✓ You need something quick to implement and correctness > speed
+  ✓ You want to detect whether an array is already sorted cheaply
 
-4. Can Bubble Sort achieve O(n) complexity?
-Yes. When the optimized version uses a swapped flag and the array is already sorted.
+Bubble Sort is the wrong choice when:
+  ✗ You have more than a few hundred elements
+  ✗ Performance matters
+  ✗ You're building anything production-facing
+```
 
-5. Is Bubble Sort used in industry?
-Rarely. More efficient algorithms such as Quick Sort, Merge Sort, and Tim Sort are preferred.
+---
 
-📚 Key Takeaways
-Bubble Sort repeatedly swaps adjacent elements.
-Largest element reaches its correct position after each pass.
-Best Case: O(n)
-Average Case: O(n²)
-Worst Case: O(n²)
-Space Complexity: O(1)
-Stable and In-Place sorting algorithm.
-Primarily used for learning and understanding sorting fundamentals.
+## Common Interview Questions
+
+**Q: Is Bubble Sort stable?**
+Yes — equal elements are never swapped, so they maintain their original relative order.
+
+**Q: Is it in-place?**
+Yes — swaps happen directly in the array. Space complexity is O(1).
+
+**Q: Why is it called "Bubble Sort"?**
+After each pass, the largest unsorted value has "bubbled up" to its correct position at the end — just like a bubble rising to the surface.
+
+**Q: Can Bubble Sort achieve O(n)?**
+Yes — in the best case (already-sorted input), the optimised version exits after a single pass with zero swaps.
+
+**Q: Is it used in industry?**
+Rarely, if ever. In practice you'd reach for Tim Sort (Python's built-in), Merge Sort, or Quick Sort.
+
+---
+
+## Key Takeaways
+
+```
+┌─────────────────────────────────────────────────────────┐
+│  BUBBLE SORT — AT A GLANCE                              │
+│                                                         │
+│  Strategy:   Compare adjacent pairs, swap if needed     │
+│  Passes:     n-1 in worst case                          │
+│                                                         │
+│  Time  →  Best: O(n)  |  Avg/Worst: O(n²)               │
+│  Space →  O(1) — in-place                               │
+│                                                         │
+│  Stable: Yes   Adaptive: Yes (with swapped flag)        │
+│                                                         │
+│  Use for: learning   Avoid for: real datasets           │
+└─────────────────────────────────────────────────────────┘
+```
+
+---
+
+*Day 1 of daily algorithm commits — next up: Selection Sort / Insertion Sort / Binary Search*
