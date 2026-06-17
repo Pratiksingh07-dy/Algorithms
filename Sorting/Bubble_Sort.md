@@ -3,6 +3,9 @@
 > *"The simplest sorting algorithm — and the best one for building intuition."*
 
 ---
+![Python](https://img.shields.io/badge/Language-Python-blue)
+![Difficulty](https://img.shields.io/badge/Difficulty-Beginner-green)
+![Category](https://img.shields.io/badge/Category-Sorting-orange)
 
 ## What is Bubble Sort?
 
