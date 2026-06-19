@@ -333,11 +333,11 @@ Technically yes, but in-place merge algorithms are complex and have worse consta
 ┌─────────────────────────────────────────────────────────────────┐
 │  MERGE SORT — AT A GLANCE                                       │
 │                                                                 │
-│  Strategy:   Divide in half → recurse → merge sorted halves    │
+│  Strategy:   Divide in half → recurse → merge sorted halves     │
 │  Levels:     log n (split depth)                                │
 │                                                                 │
-│  Time  →  Always O(n log n) — best, average, and worst         │
-│  Space →  O(n) auxiliary + O(log n) call stack                 │
+│  Time  →  Always O(n log n) — best, average, and worst          │
+│  Space →  O(n) auxiliary + O(log n) call stack                  │
 │                                                                 │
 │  Stable: Yes   In-Place: No   Adaptive: No                      │
 │                                                                 │
