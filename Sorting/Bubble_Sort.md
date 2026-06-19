@@ -5,7 +5,7 @@
 ---
 ![Python](https://img.shields.io/badge/Language-Python-blue)
 ![Difficulty](https://img.shields.io/badge/Difficulty-Beginner-green)
-![Category](https://img.shields.io/badge/Category-Sorting-orange)
+![Category](https://img.shields.io/badge/Category-Sorting-orange)   
 
 ## What is Bubble Sort?
 
