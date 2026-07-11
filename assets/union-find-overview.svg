@@ -1,0 +1,124 @@
+<svg viewBox="0 0 900 400" xmlns="http://www.w3.org/2000/svg" font-family="'Segoe UI', Arial, sans-serif">
+  <rect width="900" height="400" fill="#0f1117" rx="16"/>
+  <text x="450" y="35" text-anchor="middle" fill="#e2e8f0" font-size="20" font-weight="700">Union-Find (Disjoint Set Union)</text>
+  <text x="450" y="56" text-anchor="middle" fill="#94a3b8" font-size="12">Track connected components — union merges sets, find identifies the root</text>
+
+  <!-- === Phase 1: Initial === -->
+  <text x="130" y="85" text-anchor="middle" fill="#94a3b8" font-size="12" font-weight="600">Initial — 7 disjoint sets</text>
+  <text x="130" y="100" text-anchor="middle" fill="#64748b" font-size="10">Each node is its own parent</text>
+
+  <!-- 7 solo nodes -->
+  <circle cx="34" cy="125" r="18" fill="#1e293b" stroke="#475569" stroke-width="1.5"/>
+  <text x="34" y="130" text-anchor="middle" fill="#94a3b8" font-size="12" font-weight="700">0</text>
+  <circle cx="74" cy="125" r="18" fill="#1e293b" stroke="#475569" stroke-width="1.5"/>
+  <text x="74" y="130" text-anchor="middle" fill="#94a3b8" font-size="12" font-weight="700">1</text>
+  <circle cx="114" cy="125" r="18" fill="#1e293b" stroke="#475569" stroke-width="1.5"/>
+  <text x="114" y="130" text-anchor="middle" fill="#94a3b8" font-size="12" font-weight="700">2</text>
+  <circle cx="154" cy="125" r="18" fill="#1e293b" stroke="#475569" stroke-width="1.5"/>
+  <text x="154" y="130" text-anchor="middle" fill="#94a3b8" font-size="12" font-weight="700">3</text>
+  <circle cx="194" cy="125" r="18" fill="#1e293b" stroke="#475569" stroke-width="1.5"/>
+  <text x="194" y="130" text-anchor="middle" fill="#94a3b8" font-size="12" font-weight="700">4</text>
+  <circle cx="234" cy="125" r="18" fill="#1e293b" stroke="#475569" stroke-width="1.5"/>
+  <text x="234" y="130" text-anchor="middle" fill="#94a3b8" font-size="12" font-weight="700">5</text>
+  <circle cx="274" cy="125" r="18" fill="#1e293b" stroke="#475569" stroke-width="1.5"/>
+  <text x="274" y="130" text-anchor="middle" fill="#94a3b8" font-size="12" font-weight="700">6</text>
+
+  <!-- parent array -->
+  <text x="130" y="158" text-anchor="middle" fill="#64748b" font-size="10">parent[ ] = [0, 1, 2, 3, 4, 5, 6]</text>
+
+  <!-- === Phase 2: After some unions === -->
+  <text x="130" y="195" text-anchor="middle" fill="#f59e0b" font-size="12" font-weight="600">After: union(0,1), union(1,2), union(3,4), union(5,6)</text>
+
+  <!-- Component 1: 0-1-2 -->
+  <circle cx="64" cy="255" r="20" fill="#1c3528" stroke="#4ade80" stroke-width="2"/>
+  <text x="64" y="260" text-anchor="middle" fill="#4ade80" font-size="12" font-weight="700">0</text>
+  <text x="64" y="245" fill="#4ade80" font-size="9" text-anchor="middle">root</text>
+  <circle cx="34" cy="285" r="18" fill="#1c3528" stroke="#4ade80" stroke-width="1.5"/>
+  <text x="34" y="290" text-anchor="middle" fill="#86efac" font-size="12">1</text>
+  <circle cx="94" cy="285" r="18" fill="#1c3528" stroke="#4ade80" stroke-width="1.5"/>
+  <text x="94" y="290" text-anchor="middle" fill="#86efac" font-size="12">2</text>
+  <line x1="64" y1="275" x2="44" y2="280" stroke="#4ade80" stroke-width="1.5"/>
+  <line x1="64" y1="275" x2="84" y2="280" stroke="#4ade80" stroke-width="1.5"/>
+
+  <!-- Component 2: 3-4 -->
+  <circle cx="174" cy="255" r="20" fill="#1e1b4b" stroke="#818cf8" stroke-width="2"/>
+  <text x="174" y="260" text-anchor="middle" fill="#818cf8" font-size="12" font-weight="700">3</text>
+  <text x="174" y="245" fill="#818cf8" font-size="9" text-anchor="middle">root</text>
+  <circle cx="174" cy="295" r="18" fill="#1e1b4b" stroke="#818cf8" stroke-width="1.5"/>
+  <text x="174" y="300" text-anchor="middle" fill="#a5b4fc" font-size="12">4</text>
+  <line x1="174" y1="275" x2="174" y2="283" stroke="#818cf8" stroke-width="1.5"/>
+
+  <!-- Component 3: 5-6 -->
+  <circle cx="254" cy="255" r="20" fill="#2d1f1f" stroke="#f87171" stroke-width="2"/>
+  <text x="254" y="260" text-anchor="middle" fill="#f87171" font-size="12" font-weight="700">5</text>
+  <text x="254" y="245" fill="#f87171" font-size="9" text-anchor="middle">root</text>
+  <circle cx="254" cy="295" r="18" fill="#2d1f1f" stroke="#f87171" stroke-width="1.5"/>
+  <text x="254" y="300" text-anchor="middle" fill="#fca5a5" font-size="12">6</text>
+  <line x1="254" y1="275" x2="254" y2="283" stroke="#f87171" stroke-width="1.5"/>
+
+  <text x="130" y="330" text-anchor="middle" fill="#64748b" font-size="10">parent[ ] = [0, 0, 0, 3, 3, 5, 5]</text>
+  <text x="130" y="345" text-anchor="middle" fill="#94a3b8" font-size="10">find(2) → 0   find(4) → 3   find(6) → 5</text>
+  <text x="130" y="362" text-anchor="middle" fill="#f59e0b" font-size="10">connected(0,2)? YES   connected(0,3)? NO</text>
+
+  <!-- === DIVIDER === -->
+  <line x1="330" y1="70" x2="330" y2="390" stroke="#334155" stroke-width="1.5" stroke-dasharray="6,4"/>
+
+  <!-- === Right: Path Compression === -->
+  <text x="615" y="85" text-anchor="middle" fill="#e2e8f0" font-size="13" font-weight="700">Path Compression — find() Optimisation</text>
+
+  <!-- Before compression -->
+  <text x="460" y="108" text-anchor="middle" fill="#94a3b8" font-size="11">Before: find(5) without compression</text>
+  <circle cx="400" cy="135" r="18" fill="#2d1f1f" stroke="#ef4444" stroke-width="1.5"/>
+  <text x="400" y="140" text-anchor="middle" fill="#ef4444" font-size="11">0</text>
+  <text x="400" y="123" text-anchor="middle" fill="#ef4444" font-size="9">root</text>
+  <line x1="400" y1="153" x2="400" y2="168" stroke="#475569" stroke-width="1.5"/>
+  <circle cx="400" cy="178" r="18" fill="#1e293b" stroke="#475569" stroke-width="1.5"/>
+  <text x="400" y="183" text-anchor="middle" fill="#94a3b8" font-size="11">1</text>
+  <line x1="400" y1="196" x2="400" y2="211" stroke="#475569" stroke-width="1.5"/>
+  <circle cx="400" cy="221" r="18" fill="#1e293b" stroke="#475569" stroke-width="1.5"/>
+  <text x="400" y="226" text-anchor="middle" fill="#94a3b8" font-size="11">2</text>
+  <line x1="400" y1="239" x2="400" y2="254" stroke="#475569" stroke-width="1.5"/>
+  <circle cx="400" cy="264" r="18" fill="#1e293b" stroke="#475569" stroke-width="1.5"/>
+  <text x="400" y="269" text-anchor="middle" fill="#94a3b8" font-size="11">3</text>
+  <line x1="400" y1="282" x2="400" y2="297" stroke="#475569" stroke-width="1.5"/>
+  <circle cx="400" cy="307" r="18" fill="#1e293b" stroke="#475569" stroke-width="1.5"/>
+  <text x="400" y="312" text-anchor="middle" fill="#94a3b8" font-size="11">4</text>
+  <line x1="400" y1="325" x2="400" y2="340" stroke="#475569" stroke-width="1.5"/>
+  <circle cx="400" cy="350" r="18" fill="#1e1b4b" stroke="#818cf8" stroke-width="2"/>
+  <text x="400" y="355" text-anchor="middle" fill="#818cf8" font-size="11">5</text>
+  <text x="400" y="378" text-anchor="middle" fill="#64748b" font-size="9">5 hops to find root</text>
+
+  <!-- Arrow -->
+  <text x="460" y="225" fill="#64748b" font-size="22">→</text>
+
+  <!-- After compression -->
+  <text x="610" y="108" text-anchor="middle" fill="#94a3b8" font-size="11">After: find(5) with compression</text>
+  <circle cx="610" cy="145" r="22" fill="#2d1f1f" stroke="#ef4444" stroke-width="2"/>
+  <text x="610" y="150" text-anchor="middle" fill="#ef4444" font-size="11">0</text>
+  <text x="610" y="133" text-anchor="middle" fill="#ef4444" font-size="9">root</text>
+  <!-- all children point directly to root -->
+  <circle cx="530" cy="245" r="18" fill="#052e16" stroke="#4ade80" stroke-width="1.5"/>
+  <text x="530" y="250" text-anchor="middle" fill="#4ade80" font-size="11">1</text>
+  <circle cx="570" cy="270" r="18" fill="#052e16" stroke="#4ade80" stroke-width="1.5"/>
+  <text x="570" y="275" text-anchor="middle" fill="#4ade80" font-size="11">2</text>
+  <circle cx="610" cy="280" r="18" fill="#052e16" stroke="#4ade80" stroke-width="1.5"/>
+  <text x="610" y="285" text-anchor="middle" fill="#4ade80" font-size="11">3</text>
+  <circle cx="650" cy="270" r="18" fill="#052e16" stroke="#4ade80" stroke-width="1.5"/>
+  <text x="650" y="275" text-anchor="middle" fill="#4ade80" font-size="11">4</text>
+  <circle cx="690" cy="245" r="18" fill="#052e16" stroke="#4ade80" stroke-width="1.5"/>
+  <text x="690" y="250" text-anchor="middle" fill="#4ade80" font-size="11">5</text>
+
+  <line x1="595" y1="167" x2="540" y2="232" stroke="#4ade80" stroke-width="1.5"/>
+  <line x1="600" y1="167" x2="574" y2="258" stroke="#4ade80" stroke-width="1.5"/>
+  <line x1="610" y1="167" x2="610" y2="268" stroke="#4ade80" stroke-width="1.5"/>
+  <line x1="620" y1="167" x2="646" y2="258" stroke="#4ade80" stroke-width="1.5"/>
+  <line x1="625" y1="167" x2="680" y2="232" stroke="#4ade80" stroke-width="1.5"/>
+
+  <text x="610" y="308" text-anchor="middle" fill="#4ade80" font-size="9">All nodes point directly to root</text>
+  <text x="610" y="322" text-anchor="middle" fill="#86efac" font-size="9">Next find() = O(1)!</text>
+
+  <!-- complexity bottom -->
+  <rect x="340" y="348" width="540" height="38" rx="8" fill="#1e293b"/>
+  <text x="610" y="364" text-anchor="middle" fill="#e2e8f0" font-size="11" font-weight="600">With Union by Rank + Path Compression:</text>
+  <text x="610" y="380" text-anchor="middle" fill="#4ade80" font-size="11">find() and union() → O(α(n)) ≈ O(1) amortised   (α = inverse Ackermann)</text>
+</svg>
