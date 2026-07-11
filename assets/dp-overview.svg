@@ -1,0 +1,113 @@
+<svg viewBox="0 0 900 420" xmlns="http://www.w3.org/2000/svg" font-family="'Segoe UI', Arial, sans-serif">
+  <!-- Background -->
+  <rect width="900" height="420" fill="#0f1117" rx="16"/>
+
+  <!-- Title -->
+  <text x="450" y="38" text-anchor="middle" fill="#e2e8f0" font-size="20" font-weight="700">Dynamic Programming — Core Concept</text>
+
+  <!-- Subtitle -->
+  <text x="450" y="62" text-anchor="middle" fill="#94a3b8" font-size="13">Overlapping subproblems solved once and stored — never recomputed</text>
+
+  <!-- === Left: Naive Recursion Tree === -->
+  <text x="195" y="98" text-anchor="middle" fill="#f87171" font-size="14" font-weight="600">❌ Naive Recursion — fib(5)</text>
+
+  <!-- fib(5) -->
+  <rect x="155" y="108" width="80" height="30" rx="8" fill="#2d1f1f" stroke="#f87171" stroke-width="1.5"/>
+  <text x="195" y="128" text-anchor="middle" fill="#f87171" font-size="13" font-weight="600">fib(5)</text>
+
+  <!-- level 2 -->
+  <rect x="85" y="158" width="70" height="28" rx="8" fill="#2d1f1f" stroke="#f87171" stroke-width="1.5"/>
+  <text x="120" y="177" text-anchor="middle" fill="#f87171" font-size="12">fib(4)</text>
+  <rect x="235" y="158" width="70" height="28" rx="8" fill="#2d1f1f" stroke="#f87171" stroke-width="1.5"/>
+  <text x="270" y="177" text-anchor="middle" fill="#f87171" font-size="12">fib(3)</text>
+
+  <!-- level 3 -->
+  <rect x="44" y="208" width="62" height="26" rx="8" fill="#2d1f1f" stroke="#f87171" stroke-width="1.5"/>
+  <text x="75" y="226" text-anchor="middle" fill="#f87171" font-size="11">fib(3)</text>
+  <rect x="124" y="208" width="62" height="26" rx="8" fill="#2d1f1f" stroke="#f87171" stroke-width="1.5"/>
+  <text x="155" y="226" text-anchor="middle" fill="#f87171" font-size="11">fib(2)</text>
+  <rect x="200" y="208" width="62" height="26" rx="8" fill="#2d1f1f" stroke="#f87171" stroke-width="1.5"/>
+  <text x="231" y="226" text-anchor="middle" fill="#f87171" font-size="11">fib(2)</text>
+  <rect x="279" y="208" width="62" height="26" rx="8" fill="#2d1f1f" stroke="#f87171" stroke-width="1.5"/>
+  <text x="310" y="226" text-anchor="middle" fill="#f87171" font-size="11">fib(1)</text>
+
+  <!-- level 4 -->
+  <rect x="20" y="256" width="56" height="24" rx="8" fill="#2d1f1f" stroke="#ef4444" stroke-width="1.5"/>
+  <text x="48" y="273" text-anchor="middle" fill="#ef4444" font-size="10">fib(2)</text>
+  <rect x="84" y="256" width="56" height="24" rx="8" fill="#2d1f1f" stroke="#ef4444" stroke-width="1.5"/>
+  <text x="112" y="273" text-anchor="middle" fill="#ef4444" font-size="10">fib(1)</text>
+  <rect x="143" y="256" width="56" height="24" rx="8" fill="#2d1f1f" stroke="#ef4444" stroke-width="1.5"/>
+  <text x="171" y="273" text-anchor="middle" fill="#ef4444" font-size="10">fib(1)</text>
+  <rect x="204" y="256" width="56" height="24" rx="8" fill="#2d1f1f" stroke="#ef4444" stroke-width="1.5"/>
+  <text x="232" y="273" text-anchor="middle" fill="#ef4444" font-size="10">fib(0)</text>
+
+  <!-- Lines level1->2 -->
+  <line x1="175" y1="138" x2="140" y2="158" stroke="#475569" stroke-width="1"/>
+  <line x1="215" y1="138" x2="250" y2="158" stroke="#475569" stroke-width="1"/>
+  <!-- Lines level2->3 -->
+  <line x1="108" y1="186" x2="86" y2="208" stroke="#475569" stroke-width="1"/>
+  <line x1="132" y1="186" x2="152" y2="208" stroke="#475569" stroke-width="1"/>
+  <line x1="252" y1="186" x2="228" y2="208" stroke="#475569" stroke-width="1"/>
+  <line x1="288" y1="186" x2="308" y2="208" stroke="#475569" stroke-width="1"/>
+  <!-- Lines level3->4 -->
+  <line x1="62" y1="234" x2="44" y2="256" stroke="#475569" stroke-width="1"/>
+  <line x1="88" y1="234" x2="108" y2="256" stroke="#475569" stroke-width="1"/>
+  <line x1="144" y1="234" x2="165" y2="256" stroke="#475569" stroke-width="1"/>
+  <line x1="220" y1="234" x2="230" y2="256" stroke="#475569" stroke-width="1"/>
+
+  <!-- Repeated badge -->
+  <rect x="55" y="293" width="280" height="26" rx="6" fill="#7f1d1d" opacity="0.8"/>
+  <text x="195" y="311" text-anchor="middle" fill="#fca5a5" font-size="12" font-weight="600">fib(2) computed 3×, fib(3) computed 2×</text>
+  <text x="195" y="336" text-anchor="middle" fill="#94a3b8" font-size="11">Time: O(2ⁿ)   Space: O(n) stack</text>
+
+  <!-- === Divider === -->
+  <line x1="440" y1="85" x2="440" y2="380" stroke="#334155" stroke-width="1.5" stroke-dasharray="6,4"/>
+
+  <!-- === Right: DP Memoization === -->
+  <text x="680" y="98" text-anchor="middle" fill="#4ade80" font-size="14" font-weight="600">✅ DP Memoization — fib(5)</text>
+
+  <!-- memo table -->
+  <text x="680" y="122" text-anchor="middle" fill="#94a3b8" font-size="11">memo = { }</text>
+
+  <!-- fib(5) node -->
+  <rect x="640" y="130" width="80" height="30" rx="8" fill="#052e16" stroke="#4ade80" stroke-width="1.5"/>
+  <text x="680" y="150" text-anchor="middle" fill="#4ade80" font-size="13" font-weight="600">fib(5)</text>
+
+  <rect x="560" y="178" width="72" height="28" rx="8" fill="#052e16" stroke="#4ade80" stroke-width="1.5"/>
+  <text x="596" y="197" text-anchor="middle" fill="#4ade80" font-size="12">fib(4)</text>
+  <rect x="725" y="178" width="72" height="28" rx="8" fill="#1c3528" stroke="#86efac" stroke-width="1.5" stroke-dasharray="4,3"/>
+  <text x="761" y="197" text-anchor="middle" fill="#86efac" font-size="12">fib(3)✓</text>
+
+  <rect x="503" y="226" width="72" height="28" rx="8" fill="#052e16" stroke="#4ade80" stroke-width="1.5"/>
+  <text x="539" y="245" text-anchor="middle" fill="#4ade80" font-size="12">fib(3)</text>
+  <rect x="624" y="226" width="72" height="28" rx="8" fill="#1c3528" stroke="#86efac" stroke-width="1.5" stroke-dasharray="4,3"/>
+  <text x="660" y="245" text-anchor="middle" fill="#86efac" font-size="12">fib(2)✓</text>
+
+  <rect x="470" y="274" width="64" height="26" rx="8" fill="#052e16" stroke="#4ade80" stroke-width="1.5"/>
+  <text x="502" y="291" text-anchor="middle" fill="#4ade80" font-size="11">fib(2)</text>
+  <rect x="552" y="274" width="64" height="26" rx="8" fill="#1c3528" stroke="#86efac" stroke-width="1.5" stroke-dasharray="4,3"/>
+  <text x="584" y="291" text-anchor="middle" fill="#86efac" font-size="11">fib(1)✓</text>
+
+  <!-- Lines right side -->
+  <line x1="665" y1="160" x2="616" y2="178" stroke="#475569" stroke-width="1"/>
+  <line x1="695" y1="160" x2="745" y2="178" stroke="#475569" stroke-width="1"/>
+  <line x1="580" y1="206" x2="548" y2="226" stroke="#475569" stroke-width="1"/>
+  <line x1="612" y1="206" x2="646" y2="226" stroke="#475569" stroke-width="1"/>
+  <line x1="526" y1="254" x2="499" y2="274" stroke="#475569" stroke-width="1"/>
+  <line x1="556" y1="254" x2="574" y2="274" stroke="#475569" stroke-width="1"/>
+
+  <!-- Cached label -->
+  <rect x="700" y="168" width="90" height="20" rx="4" fill="#14532d"/>
+  <text x="745" y="182" text-anchor="middle" fill="#86efac" font-size="10">cached ✓</text>
+
+  <!-- Result badge -->
+  <rect x="490" y="314" width="380" height="26" rx="6" fill="#14532d" opacity="0.9"/>
+  <text x="680" y="332" text-anchor="middle" fill="#86efac" font-size="12" font-weight="600">Each subproblem solved exactly once → O(n)</text>
+  <text x="680" y="354" text-anchor="middle" fill="#94a3b8" font-size="11">Time: O(n)   Space: O(n) memo table</text>
+
+  <!-- Bottom comparison bar -->
+  <rect x="30" y="378" width="840" height="32" rx="8" fill="#1e293b"/>
+  <text x="195" y="399" text-anchor="middle" fill="#f87171" font-size="12">Naive: O(2ⁿ) — exponential explosion</text>
+  <text x="450" y="399" text-anchor="middle" fill="#64748b" font-size="12">→→→</text>
+  <text x="680" y="399" text-anchor="middle" fill="#4ade80" font-size="12">DP Memo: O(n) — linear with caching</text>
+</svg>
