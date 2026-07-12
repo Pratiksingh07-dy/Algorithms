@@ -1,8 +1,7 @@
-# 🌳 Binary Search Tree
+#  Binary Search Tree
 
 > *"A sorted array you can grow. A linked list you can search in O(log n). A BST gives you both."*
 
-![Binary Search Tree Overview](./assets/bst-overview.png)
 
 ---
 
@@ -22,7 +21,6 @@ This ordering is maintained at every node — not just the root. It's what allow
 
 ## Anatomy of a BST
 
-![BST Anatomy Diagram](./assets/bst-anatomy.png)
 
 ```
                     50              ← Root
@@ -165,7 +163,6 @@ class BST:
 
 ## The Three Delete Cases
 
-![BST Delete Cases](./assets/bst-delete-cases.png)
 
 ```
 Case 1 — Delete a LEAF (node 10):
@@ -205,7 +202,6 @@ Case 3 — Delete node with TWO CHILDREN (node 50 with children 30 and 70):
 
 ## Tree Traversals
 
-![BST Traversals Diagram](./assets/bst-traversals.png)
 
 All traversals are **O(n)** — every node is visited exactly once.
 
@@ -283,7 +279,6 @@ def levelorder(root):
 
 ## Complexity
 
-![BST Complexity Comparison](./assets/bst-complexity.png)
 
 ### Time
 
@@ -423,21 +418,21 @@ def sorted_to_bst(nums):
 ┌───────────────────────────────────────────────────────────────────┐
 │  BINARY SEARCH TREE — AT A GLANCE                                 │
 │                                                                   │
-│  Property:  left < node < right (at every node)                  │
+│  Property:  left < node < right (at every node)                   │
 │                                                                   │
-│  Time  →  O(log n) balanced  |  O(n) degenerate (sorted insert) │
-│  Space →  O(n) nodes  +  O(h) stack for recursive ops           │
+│  Time  →  O(log n) balanced  |  O(n) degenerate (sorted insert)   │
+│  Space →  O(n) nodes  +  O(h) stack for recursive ops             │
 │                                                                   │
 │  Traversals:                                                      │
-│    In-order   → sorted output (most useful)                      │
-│    Pre-order  → copy / serialise tree                            │
-│    Post-order → delete / evaluate bottom-up                      │
-│    Level-order→ BFS, level-by-level                              │
+│    In-order   → sorted output (most useful)                       │
+│    Pre-order  → copy / serialise tree                             │
+│    Post-order → delete / evaluate bottom-up                       │
+│    Level-order→ BFS, level-by-level                               │
 │                                                                   │
-│  Worst case: inserting sorted data → linked list → O(n)          │
-│  Solution:   use AVL or Red-Black tree for guaranteed O(log n)   │
+│  Worst case: inserting sorted data → linked list → O(n)           │
+│  Solution:   use AVL or Red-Black tree for guaranteed O(log n)    │
 │                                                                   │
-│  Choose BST over Hash Table when: range queries, ordered output  │
+│  Choose BST over Hash Table when: range queries, ordered output   │
 └───────────────────────────────────────────────────────────────────┘
 ```
 
