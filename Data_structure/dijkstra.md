@@ -1,4 +1,4 @@
-# 🗺️ Dijkstra's Algorithm
+#  Dijkstra's Algorithm
 
 > *"Find the shortest path from one node to all others — greedily, one closest node at a time."*
 
